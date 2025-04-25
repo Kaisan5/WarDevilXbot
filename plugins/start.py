@@ -162,7 +162,7 @@ async def start_command(client: Client, message: Message):
                 await notification_msg.edit(
                     "<b><blockquote>ʏᴏᴜʀ ᴠɪᴅᴇᴏ / ꜰɪʟᴇ ɪꜱ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ !!\n\nᴄʟɪᴄᴋ ʙᴇʟᴏᴡ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ᴅᴇʟᴇᴛᴇᴅ ᴠɪᴅᴇᴏ / ꜰɪʟᴇ</blockquote></b>",
                     reply_markup=keyboard
-                )
+                
             except Exception as e:
                 print(f"Error updating notification with 'Get File Again' button: {e}")
     else:
