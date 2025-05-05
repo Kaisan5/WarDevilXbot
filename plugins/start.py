@@ -1,3 +1,4 @@
+
 #Stelleron_Hunter
 
 import asyncio
@@ -16,7 +17,6 @@ from bot import Bot
 from config import *
 from helper_func import *
 from database.database import *
-from config import SHORTNER_PIC
 
 # File auto-delete time in seconds (Set your desired time in seconds here)
 FILE_AUTO_DELETE = TIME  # Example: 3600 seconds (1 hour)
@@ -55,13 +55,12 @@ async def start_command(client: Client, message: Message):
                 if verify_status["link"] == "":
                     reply_markup = None
                 return await message.reply(
-                    f"Your token has been successfully verified and is valid for {get_exp_time(VERIFY_EXPIRE)}",
+                    f"Your token has been successfully verified and is valid for @Stelleron_Hunter {get_exp_time(VERIFY_EXPIRE)}",
                     reply_markup=reply_markup,
                     protect_content=False,
                     quote=True
                 )
 
-            if not verify_status['is_verified']:
             if not verify_status['is_verified']:
                 token = ''.join(random.choices(rohit.ascii_letters + rohit.digits, k=10))
                 await update_verify_status(id, verify_token=token, link="")
@@ -77,20 +76,6 @@ async def start_command(client: Client, message: Message):
                     protect_content=False,
                     quote=True
                 )
-                
-        await message.reply_photo(
-            photo=VERIFIED_PIC,
-            caption=VERIFIED_MSG.format(
-                first=message.from_user.first_name,
-                last=message.from_user.last_name,
-                username=None if not message.from_user.username else '@' + message.from_user.username,
-                mention=message.from_user.mention,
-                id=message.from_user.id
-            ),
-            reply_markup=reply_markup,
-            message_effect_id=5104841245755180586)  # 🔥
-        
-        return
 
     # Handle normal message flow
     text = message.text
@@ -124,7 +109,7 @@ async def start_command(client: Client, message: Message):
         try:
             messages = await get_messages(client, ids)
         except Exception as e:
-            await message.reply_text("Something went wrong!")
+            await message.reply_text("Something went wrong! @Stelleron_Hunter")
             print(f"Error getting messages: {e}")
             return
         finally:
@@ -153,7 +138,7 @@ async def start_command(client: Client, message: Message):
 
         if FILE_AUTO_DELETE > 0:
             notification_msg = await message.reply(
-                f"<b>This file will be deleted in <a href=https://t.me/Flix_Dex>{get_exp_time(FILE_AUTO_DELETE)}. </a> Please save or forward it to your saved messages before it gets deleted\n<a>Helpline @EternalsHelplineBot</b>"
+                f"<b><blockquote>𝐻𝑒𝑦!! 𝑊𝑒𝑙𝑐𝑜𝑚𝑒 𝑇𝑜 𝐶𝑜𝑚𝑚𝑢𝑛𝑖𝑡𝑦. 𝐼𝑓 𝑦𝑜𝑢 𝑤𝑎𝑛𝑡 𝑡𝑜 𝑠𝑢𝑝𝑝𝑜𝑟𝑡 𝑜𝑢𝑟 𝑐𝑜𝑚𝑚𝑢𝑛𝑖𝑡𝑦, 𝑦𝑜𝑢 𝑐𝑎𝑛 𝑑𝑜 𝑠𝑜 𝑏𝑦 𝑠𝑢𝑏𝑠𝑐𝑟𝑖𝑏𝑖𝑛𝑔 𝑡𝑜 𝑜𝑢𝑟 𝑐ℎ𝑎𝑛𝑛𝑒𝑙.<blockquote></b>"
             )
 
             await asyncio.sleep(FILE_AUTO_DELETE)
@@ -176,7 +161,7 @@ async def start_command(client: Client, message: Message):
                 ) if reload_url else None
 
                 await notification_msg.edit(
-                    "<b>ʏᴏᴜʀ ᴠɪᴅᴇᴏ / ꜰɪʟᴇ ɪꜱ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ !!\n\nᴄʟɪᴄᴋ ʙᴇʟᴏᴡ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ᴅᴇʟᴇᴛᴇᴅ ᴠɪᴅᴇᴏ / ꜰɪʟᴇ 👇</b>",
+                    "<b><blockquote>𝑇ℎ𝑎𝑛𝑘𝑠 𝐹𝑜𝑟 𝑦𝑜𝑢𝑟 𝑆𝑢𝑝𝑝𝑜𝑟𝑡 @Anime_Eternals<blockquote></b>",
                     reply_markup=keyboard
                 )
             except Exception as e:
@@ -184,7 +169,7 @@ async def start_command(client: Client, message: Message):
     else:
         reply_markup = InlineKeyboardMarkup(
             [
-                    [InlineKeyboardButton("• ᴍᴏʀᴇ ᴄʜᴀɴɴᴇʟs •", url="https://t.me/AnimeNexusNetwork/158")],
+                    [InlineKeyboardButton("• ᴍᴏʀᴇ ᴄʜᴀɴɴᴇʟs •", url="https://t.me/Stelleron_Hunter/16")],
 
     [
                     InlineKeyboardButton("• ᴀʙᴏᴜᴛ", callback_data = "about"),
@@ -210,8 +195,7 @@ async def start_command(client: Client, message: Message):
 
 
 #=====================================================================================##
-# Don't Remove Credit @CodeFlix_Bots, @rohit_1888
-# Ask Doubt on telegram @CodeflixSupport
+# Stelleron_Hunter
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
@@ -279,7 +263,7 @@ async def not_joined(client: Client, message: Message):
 
 #=====================================================================================##
 
-WAIT_MSG = "<b>Working....</b>"
+WAIT_MSG = "<b>Working.... @Stelleron_Hunter</b>"
 
 REPLY_ERROR = "<code>Use this command as a reply to any telegram message without any spaces.</code>"
 
