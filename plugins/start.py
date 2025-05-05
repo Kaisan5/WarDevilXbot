@@ -71,7 +71,15 @@ async def start_command(client: Client, message: Message):
                     #[InlineKeyboardButton('• ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ •', callback_data='premium')]
                 ]
                 return await message.reply(
-                    f"<b><a><blockquote>Your Ads token is expired, refresh your token and try again</a></blockquote></b>\n\nToken Timeout {get_exp_time(VERIFY_EXPIRE)}\n\nᴡʜᴀᴛ ɪs ᴛʜᴇ ᴛᴏᴋᴇɴ??</a>\nᴛʜɪs ɪs ᴀɴ ᴀᴅs ᴛᴏᴋᴇɴ. ᴘᴀssɪɴɢ ᴏɴᴇ ᴀᴅ ᴀʟʟᴏᴡs ʏᴏᴜ ᴛᴏ ᴜsᴇ ᴛʜᴇ ʙᴏᴛ ғᴏʀ {get_exp_time(VERIFY_EXPIRE)</a></b>\n\nAPPLE/IPHONE USERS COPY TOKEN LINK AND OPEN IN CHROME BROWSER</a></b>\n\n<b><blockquote><a>Important Notice‼️Once you click on the link do not go back/skip or close the link if you close the line your token will expire. If you accidentally close the link /start the bot and verify again‼️</a></blockquote></b>\n<b><blockquote expandable><a>We are adding a token system. So that our work can continue like this. Because we are not earning anything by doing this all, that is why we are adding a token system. I hope you guys will still support us</a></blockquote expandable></b></a>\nHᴇʟᴘʟɪɴᴇ ʙᴏᴛ @EternalsHelplineBot",
+                    f"<b><blockquote>Your Ads token is expired, refresh your token and try again</blockquote></b>\n"
+                    f"Token Timeout: {get_exp_time(VERIFY_EXPIRE)}\n\n"
+                    f"ᴡʜᴀᴛ ɪs ᴛʜᴇ ᴛᴏᴋᴇɴ??\n"
+                    f"ᴛʜɪs ɪs ᴀɴ ᴀᴅs ᴛᴏᴋᴇɴ. ᴘᴀssɪɴɢ ᴏɴᴇ ᴀᴅ ᴀʟʟᴏᴡs ʏᴏᴜ ᴛᴏ ᴜsᴇ ᴛʜᴇ ʙᴏᴛ ғᴏʀ {get_exp_time(VERIFY_EXPIRE)}\n"
+                    f"APPLE/IPHONE USERS COPY TOKEN LINK AND OPEN IN CHROME BROWSER\n\n"
+                    f"<b><blockquote>Important Notice‼️Once you click on the link do not go back/skip or close the link If you close it, your token will expire. If you accidentally close it, /start the bot and verify again‼️</blockquote></b>\n"
+                    f"<b><blockquote expandable>We are adding a token system so that our work can continue. We aren't earning anything from this I hope you guys will still support us</blockquote expandable></b>\n"
+                    f"Hᴇʟᴘʟɪɴᴇ ʙᴏᴛ @EternalsHelplineBot"
+                )
                     reply_markup=InlineKeyboardMarkup(btn),
                     protect_content=False,
                     quote=True
