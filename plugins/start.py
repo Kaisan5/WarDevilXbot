@@ -16,6 +16,7 @@ from bot import Bot
 from config import *
 from helper_func import *
 from database.database import *
+from config import SHORTNER_PIC
 
 # File auto-delete time in seconds (Set your desired time in seconds here)
 FILE_AUTO_DELETE = TIME  # Example: 3600 seconds (1 hour)
@@ -61,23 +62,25 @@ async def start_command(client: Client, message: Message):
                 )
 
             if not verify_status['is_verified']:
+            if not verify_status['is_verified']:
                 token = ''.join(random.choices(rohit.ascii_letters + rohit.digits, k=10))
                 await update_verify_status(id, verify_token=token, link="")
                 link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API, f'https://telegram.dog/{client.username}?start=verify_{token}')
                 btn = [
-                    [InlineKeyboardButton("• ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ᴠᴇʀɪғʏ •", url=link)], 
-                    [InlineKeyboardButton('• ʜᴏᴡ ᴛᴏ ᴠᴇʀɪғʏ/ᴛᴜᴛᴏʀɪᴀʟ ᴠɪᴅᴇᴏ •', url=TUT_VID)]#,
+                    [InlineKeyboardButton("» ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ᴠᴇʀɪғʏ «", url=link)], 
+                    [InlineKeyboardButton('» ʜᴏᴡ ᴛᴏ ᴠᴇʀɪғʏ/ᴛᴜᴛᴏʀɪᴀʟ ᴠɪᴅᴇᴏ «', url=TUT_VID)]#,
                     #[InlineKeyboardButton('• ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ •', callback_data='premium')]
                 ]
                 return await message.reply(
-                    f"<b><blockquote>𝗬𝗼𝘂𝗿 𝘁𝗼𝗸𝗲𝗻 𝗵𝗮𝘀 𝗲𝘅𝗽𝗶𝗿𝗲𝗱. 𝗣𝗹𝗲𝗮𝘀𝗲 𝗿𝗲𝗳𝗿𝗲𝘀𝗵 𝘆𝗼𝘂𝗿 𝘁𝗼𝗸𝗲𝗻 𝘁𝗼 𝗰𝗼𝗻𝘁𝗶𝗻𝘂𝗲..\n\n</b>Hᴇʟᴘʟɪɴᴇ ʙᴏᴛ @EternalsHelplineBot\n\n<b>Tᴏᴋᴇɴ Tɪᴍᴇᴏᴜᴛ:</b> {get_exp_time(VERIFY_EXPIRE)}\n\n<b>ᴡʜᴀᴛ ɪs ᴛʜᴇ ᴛᴏᴋᴇɴ??</b>\n\nᴛʜɪs ɪs ᴀɴ ᴀᴅs ᴛᴏᴋᴇɴ. ᴘᴀssɪɴɢ ᴏɴᴇ ᴀᴅ ᴀʟʟᴏᴡs ʏᴏᴜ ᴛᴏ ᴜsᴇ ᴛʜᴇ ʙᴏᴛ ғᴏʀ {get_exp_time(VERIFY_EXPIRE)}\n\n<b>APPLE/IPHONE USERS COPY TOKEN LINK AND OPEN IN CHROME BROWSER</blockquote></b>",
+                    f"𝗬𝗼𝘂𝗿 𝘁𝗼𝗸𝗲𝗻 𝗵𝗮𝘀 𝗲𝘅𝗽𝗶𝗿𝗲𝗱. 𝗣𝗹𝗲𝗮𝘀𝗲 𝗿𝗲𝗳𝗿𝗲𝘀𝗵 𝘆𝗼𝘂𝗿 𝘁𝗼𝗸𝗲𝗻 𝘁𝗼 𝗰𝗼𝗻𝘁𝗶𝗻𝘂𝗲.. @Stelleron_Hunter\n\n<b>Tᴏᴋᴇɴ Tɪᴍᴇᴏᴜᴛ:</b> {get_exp_time(VERIFY_EXPIRE)}\n\n<b>ᴡʜᴀᴛ ɪs ᴛʜᴇ ᴛᴏᴋᴇɴ??</b>\n\nᴛʜɪs ɪs ᴀɴ ᴀᴅs ᴛᴏᴋᴇɴ. ᴘᴀssɪɴɢ ᴏɴᴇ ᴀᴅ ᴀʟʟᴏᴡs ʏᴏᴜ ᴛᴏ ᴜsᴇ ᴛʜᴇ ʙᴏᴛ ғᴏʀ {get_exp_time(VERIFY_EXPIRE)}</b>",
                     reply_markup=InlineKeyboardMarkup(btn),
                     protect_content=False,
                     quote=True
                 )
-                await message.reply_photo(
-            photo=SHORTENER_PIC,
-            caption=SHORTENER_MSG.format(
+                
+        await message.reply_photo(
+            photo=VERIFIED_PIC,
+            caption=VERIFIED_MSG.format(
                 first=message.from_user.first_name,
                 last=message.from_user.last_name,
                 username=None if not message.from_user.username else '@' + message.from_user.username,
